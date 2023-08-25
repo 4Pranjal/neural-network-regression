@@ -1,0 +1,48 @@
+This code appears to be implementing a simple neural network from scratch for a regression task using gradient descent for optimization. The network consists of two layers, and the provided dataset `df` is used for training. Let's break down the code step by step:
+
+1. **Importing Libraries:**
+   - The code imports necessary libraries including `numpy` for numerical operations and `pandas` for data handling.
+
+2. **DataFrame Initialization (`df`):**
+   - A DataFrame `df` is created with sample data containing three columns: `cgpa`, `profile_score`, and `lpa`.
+
+3. **Function Definition - `initialize_parameters(layer_dims)`:**
+   - This function initializes the parameters of the neural network's layers (weights and biases).
+   - It takes a list `layer_dims` that specifies the number of units in each layer.
+   - It returns a dictionary `parameters` containing the initialized parameters for each layer.
+
+4. **Function Definition - `linear_forward(A_prev, W, b)`:**
+   - This function performs a linear forward propagation step for a single layer.
+   - It computes the linear transformation `Z` for the layer.
+   - `A_prev` is the input from the previous layer, `W` is the weight matrix, and `b` is the bias vector.
+   - It returns the computed `Z`.
+
+5. **Function Definition - `L_layer_forward(X, parameters)`:**
+   - This function performs forward propagation through all layers of the network.
+   - It takes the input features `X` and the initialized `parameters` dictionary.
+   - It iterates through the layers and computes forward propagation using the `linear_forward` function.
+   - It returns the output prediction `A` and the output of the last hidden layer `A_prev`.
+
+6. **Training Data Initialization (`X` and `y`):**
+   - The training data `X` is extracted from the DataFrame `df`.
+   - The target value `y` is extracted from the `lpa` column of the DataFrame.
+
+7. **Parameter Initialization:**
+   - The neural network parameters are initialized using `initialize_parameters` function.
+
+8. **Forward Propagation and Update:**
+   - Forward propagation is performed using `L_layer_forward` to compute the predicted output `y_hat`.
+   - The `update_parameters` function is called to update the network parameters based on the computed loss between `y` and `y_hat`.
+
+9. **Epochs Implementation:**
+   - The code implements multiple epochs (iterations) for training.
+   - The `epochs` variable specifies the number of epochs.
+   - The code iterates through the training data for each epoch:
+     - Performs forward propagation.
+     - Updates parameters using gradient descent and the `update_parameters` function.
+     - Calculates and prints the mean squared loss for the epoch.
+
+10. **Final Parameters:**
+    - After training, the final set of optimized parameters is printed.
+
+In summary, this code implements a basic neural network for regression using gradient descent optimization. It initializes parameters, performs forward propagation, computes the loss, and updates the parameters to minimize the loss. The provided dataset `df` is used for training. The code then iterates through multiple epochs to refine the parameters further.
